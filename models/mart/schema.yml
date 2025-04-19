@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  
+  - name: mrt_local_bike__daily_report
+    description: 
+      Ce modèle génère un rapport quotidien pour les ventes de vélos. Il agrège les données par date de commande et par magasin,
+      en calculant des indicateurs clés tels que le nombre de commandes, le nombre de clients uniques, le montant total des ventes,
+      et le nombre total d'articles vendus.
