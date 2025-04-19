@@ -1,0 +1,49 @@
+version: 2
+
+models:
+
+- name: stg_local_bike__order_items
+  description: "This model contains information about each item included in an order, including its price, quantity, and discount."
+  columns:
+    - name: order_item_id
+      description: "Primary key, unique identifier for each order item."
+      tests:
+          - unique
+          - not_null
+    - name: product_id
+      description: "Foreign key linking the order item to the corresponding product."
+      tests:
+        - relationships:
+            name: order_id_id_foreign_key_in_stg_sales_database__products
+            to: ref('stg_local_bike__products')
+            field: product_id
+    - name: total_order_item_amount
+      description: "The total amount for this order item = (price * quantity) - (1 - discount)."
+      tests:
+          - not_null
+      
+
+- name: stg_local_bike__orders
+  description: "This model contains information about each order"
+  columns:
+    - name: order_id
+      description: "Primary key, unique identifier for each order."
+      tests:
+          - unique
+          - not_null
+
+- name: stg_local_bike__products
+  description: "This model contains details of products available for sale, primarily focusing on information about the product's brand, category, year and price."
+  columns:
+    - name: product_id
+      description: "Primary key, unique identifier for each product."
+      tests:
+          - unique
+          - not_null
+    - name: product_brand_id
+      description: "Foreign key linking the product to the corresponding brand."
+      tests:
+        - relationships:
+            name: brand_id_foreign_key_in_stg_local_bike__brands
+            to: ref('stg_local_bike__brands')
+            field: product_brand_id
