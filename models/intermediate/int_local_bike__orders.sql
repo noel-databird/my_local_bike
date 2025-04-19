@@ -9,7 +9,6 @@ WITH order_items_agg AS (
 SELECT
   o.order_id,
   o.order_date,
-  o.customer_id,
   s.store_name,
   COALESCE(oi.total_order_amount, 0) AS total_order_amount,
   COALESCE(oi.total_items_by_order, 0) AS total_items_by_order

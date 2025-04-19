@@ -6,7 +6,6 @@ SELECT
     EXTRACT(YEAR FROM order_date) as order_year,
     store_name,
     COUNT(*) AS count_orders,
-    COUNT(DISTINCT customer_id) AS count_distinct_customers,
     ROUND(SUM(total_order_amount),2) AS sum_total_amount,
     SUM(total_items_by_order) AS sum_total_items_by_orders
 FROM {{ ref('int_local_bike__orders') }}
