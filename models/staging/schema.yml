@@ -32,18 +32,11 @@ models:
           - unique
           - not_null
 
-- name: stg_local_bike__products
-  description: "This model contains details of products available for sale, primarily focusing on information about the product's brand, category, year and price."
+- name: stg_local_bike__stores
+  description: "This model lists the stores."
   columns:
-    - name: product_id
-      description: "Primary key, unique identifier for each product."
+    - name: store_id
+      description: "Primary key, unique identifier for each store."
       tests:
           - unique
           - not_null
-    - name: product_brand_id
-      description: "Foreign key linking the product to the corresponding brand."
-      tests:
-        - relationships:
-            name: brand_id_foreign_key_in_stg_local_bike__brands
-            to: ref('stg_local_bike__brands')
-            field: product_brand_id
