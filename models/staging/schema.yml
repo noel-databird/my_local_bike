@@ -10,8 +10,6 @@ models:
       tests:
           - unique
           - not_null
-    - name: product_id
-      description: "Foreign key linking the order item to the corresponding product."
     - name: total_order_item_amount
       description: "The total amount for this order item = (price * quantity) - (1 - discount)."
       tests:
